@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.dgit.ncs.mappers.EmployeeMapper">
+	<resultMap type="Employee" id="EmployeeResult">
+		<id column="eno" property="empNo" />
+		<result column="ename" property="empName"/>
+		<result column="salary" property="salary"/>
+		<result column="dno" property="department.deptNo"/>
+		<result column="gender" property="gender"/>
+		<result column="joindate" property="joinDate"/>
+		<result column="title" property="title.no"/>
+	</resultMap>
+	
+	<sql id="selectSql">
+		select eno, ename, salary, dno, gender, date_format(joindate, '%Y-%m-%d') as joindate, title from employee
+	</sql>
+
+	<sql id="whereSql">
+		<where>
+			<if test="eno != null">
+				eno = #{eno}
+			</if>
+		</where>
+	</sql>
+
+
+	<select id="selectOne" parameterType="map" resultType="Employee">
+		<include refid="selectSql" />
+		<include refid="whereSql" />
+	</select>
+
+	
+	<select id="select" resultType="Employee">
+		<include refid="selectSql" />
+	</select>
+</mapper>
