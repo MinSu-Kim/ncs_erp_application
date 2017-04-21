@@ -29,12 +29,13 @@
 
 	<select id="selectOne" parameterType="map" resultMap="EmployeeResult">
 		<include refid="selectSql" />
-		<include refid="whereSql" />
+		<include refid="whereSql" /> 
 	</select>
 
 	
 	<select id="select" resultMap="EmployeeResult">
 		<include refid="selectSql" />
+		order by eno
 	</select>
 	
 	<select id="lastNum" resultType="int">
@@ -45,6 +46,7 @@
 		INSERT INTO employee (eno, ename, salary, dno, gender, joindate, title)
 		VALUES(#{empNo}, #{empName}, #{salary}, #{department.deptNo}, #{gender}, #{joinDate}, #{title.no})
 	</insert>
+	
 	<update id="update" parameterType="Employee">
 		UPDATE employee SET ename=#{empName}, salary=#{salary}, dno=#{department.deptNo}, gender=#{gender}, joindate=#{joinDate}, title=#{title.no}
 		WHERE eno=#{empNo}

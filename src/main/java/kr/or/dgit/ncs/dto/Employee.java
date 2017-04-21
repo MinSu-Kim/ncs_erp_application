@@ -1,10 +1,8 @@
 package kr.or.dgit.ncs.dto;
 
-import java.io.Serializable;
 import java.util.Date;
 
-@SuppressWarnings("serial")
-public class Employee  implements Serializable{
+public class Employee{
 	private int empNo;	
 	private String empName;
 	private Title title;
@@ -95,13 +93,60 @@ public class Employee  implements Serializable{
 	public String toString() {
 		return String.format("%s %s %s", String.format("E%06d", empNo), empName, title);
 	}
+	
 	public Object[] toArray(){
 		return new Object[]{String.format("E%06d", empNo), empName, title, String.format("%,d",salary), gender?"남자":"여자", department, String.format("%tF", joinDate)};
 	}
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((department == null) ? 0 : department.hashCode());
+		result = prime * result + ((empName == null) ? 0 : empName.hashCode());
+		result = prime * result + empNo;
+		result = prime * result + (gender ? 1231 : 1237);
+		result = prime * result + ((joinDate == null) ? 0 : joinDate.hashCode());
+		result = prime * result + salary;
+		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		return result;
+	}
+
+	@Override
 	public boolean equals(Object obj) {
-		Employee e = (Employee) obj;
-		return empNo==e.empNo;
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Employee other = (Employee) obj;
+		if (department == null) {
+			if (other.department != null)
+				return false;
+		} else if (!department.equals(other.department))
+			return false;
+		if (empName == null) {
+			if (other.empName != null)
+				return false;
+		} else if (!empName.equals(other.empName))
+			return false;
+		if (empNo != other.empNo)
+			return false;
+		if (gender != other.gender)
+			return false;
+		if (joinDate == null) {
+			if (other.joinDate != null)
+				return false;
+		} else if (!joinDate.equals(other.joinDate))
+			return false;
+		if (salary != other.salary)
+			return false;
+		if (title == null) {
+			if (other.title != null)
+				return false;
+		} else if (!title.equals(other.title))
+			return false;
+		return true;
 	}
 }

@@ -2,7 +2,10 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'application'
 
-compileJava.options.encoding= 'UTF-8'
+//인코딩지정
+tasks.withType(JavaCompile) {
+	options.encoding= 'UTF-8'
+}
 
 repositories{
 	jcenter()

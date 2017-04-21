@@ -74,13 +74,13 @@ public class TitleService {
 		return lists;
 	}
 	
-	public Title selectOne(int empCode) {
+	public Title selectOne(int titleCode) {
 		Title title = null;
 		try (SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSessionFactory().openSession();) {
 			TitleMapper titleMapper = new TitleMapperImpl(sqlSession);
 			
 			Map<String, Object> parameters = new HashMap<>();
-			parameters.put("tcode", empCode);
+			parameters.put("tcode", titleCode);
 			title =  titleMapper.selectTitleByNo(parameters);
 		}catch(Exception e){
 			e.printStackTrace();

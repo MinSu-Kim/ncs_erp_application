@@ -32,6 +32,7 @@
 	
 	<select id="select" resultMap="TitleResult">
 		<include refid="selectSql" />
+		order by tcode
 	</select>
 
 	<insert id="insert" parameterType="Title">

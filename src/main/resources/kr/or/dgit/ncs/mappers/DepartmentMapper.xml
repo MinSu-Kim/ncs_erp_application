@@ -29,6 +29,7 @@
 
 	<select id="select" resultMap="DepartmentResult">
 		<include refid="selectSql" />
+		order by dcode
 	</select>
 
 	<select id="lastNum" resultType="int">
