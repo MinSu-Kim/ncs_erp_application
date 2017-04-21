@@ -20,8 +20,8 @@ public class TitleService {
 		return instance;
 	}
 	
-	public String getLastCode(){
-		String lastCode = null;
+	public int getLastCode(){
+		int lastCode = -1;
 		try (SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSessionFactory().openSession();) {
 			TitleMapper titleMapper = new TitleMapperImpl(sqlSession);
 			lastCode = titleMapper.getLastTitleCode();
@@ -74,13 +74,13 @@ public class TitleService {
 		return lists;
 	}
 	
-	public Title selectOne(String empCode) {
+	public Title selectOne(int empCode) {
 		Title title = null;
 		try (SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSessionFactory().openSession();) {
 			TitleMapper titleMapper = new TitleMapperImpl(sqlSession);
 			
 			Map<String, Object> parameters = new HashMap<>();
-			parameters.put("eno", empCode);
+			parameters.put("tcode", empCode);
 			title =  titleMapper.selectTitleByNo(parameters);
 		}catch(Exception e){
 			e.printStackTrace();

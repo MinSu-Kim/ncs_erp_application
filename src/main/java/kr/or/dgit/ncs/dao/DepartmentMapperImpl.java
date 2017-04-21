@@ -20,21 +20,21 @@ public class DepartmentMapperImpl implements DepartmentMapper {
 	}
 	
 	@Override
-	public void insertDepartment(Department department) {
-		// TODO Auto-generated method stub
-
+	public int insertDepartment(Department department) {
+		log.debug("============== insertDepartment() ==============");
+		return sqlSession.insert(nameSpace+".insert", department);
 	}
 
 	@Override
-	public void updateDepartment(Department department) {
-		// TODO Auto-generated method stub
-
+	public int updateDepartment(Department department) {
+		log.debug("============== updateDepartment() ==============");
+		return sqlSession.update(nameSpace+".update", department);
 	}
 
 	@Override
-	public void deleteDepartment(Department department) {
-		// TODO Auto-generated method stub
-
+	public int deleteDepartment(Department department) {
+		log.debug("============== deleteDepartment() ==============");
+		return sqlSession.delete(nameSpace+".delete", department);
 	}
 
 	@Override

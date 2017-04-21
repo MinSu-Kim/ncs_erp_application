@@ -6,10 +6,10 @@ import java.util.Map;
 import kr.or.dgit.ncs.dto.Title;
 
 public interface TitleMapper {
-	public void insertTitle(Title title);
-	public void updateTitle(Title title);
-	public void deleteTitle(Title title);
+	public int insertTitle(Title title);
+	public int updateTitle(Title title);
+	public int deleteTitle(Title title);
 	public List<Title> selectTitleByAll();
-	public String getLastTitleCode();
+	public int getLastTitleCode();
 	public Title selectTitleByNo(Map<String, Object> param);
 }

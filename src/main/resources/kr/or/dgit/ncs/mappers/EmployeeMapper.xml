@@ -48,10 +48,8 @@
 	<update id="update" parameterType="Employee">
 		UPDATE employee SET ename=#{empName}, salary=#{salary}, dno=#{department.deptNo}, gender=#{gender}, joindate=#{joinDate}, title=#{title.no}
 		WHERE eno=#{empNo}
-	
 	</update>
 	<delete id="delete" parameterType="Employee">
 		DELETE FROM  employee WHERE eno=#{empNo}
-		
 	</delete>
 </mapper>

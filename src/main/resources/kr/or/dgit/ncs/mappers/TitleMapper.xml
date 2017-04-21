@@ -4,9 +4,9 @@
 
 	<resultMap type="Title" id="TitleResult">
 		<id column="tcode" property="no" />
-		<result column="tname" property="title"/>
+		<result column="tname" property="title" />
 	</resultMap>
-	
+
 	<sql id="selectSql">
 		select tcode, tname from title
 	</sql>
@@ -25,8 +25,25 @@
 		<include refid="whereSql" />
 	</select>
 
+	<select id="lastNum" resultType="int">
+		select max(tcode) from
+		title
+	</select>
 	
 	<select id="select" resultMap="TitleResult">
 		<include refid="selectSql" />
 	</select>
+
+	<insert id="insert" parameterType="Title">
+		INSERT INTO Title(tcode, tname)VALUES(#{no}, #{title});
+	</insert>
+	<update id="update" parameterType="Title">
+		UPDATE Title
+		SET tname=#{title}
+		WHERE tcode=#{no}
+	</update>
+	<delete id="delete" parameterType="Title">
+		DELETE FROM Title WHERE
+		tcode=#{no}
+	</delete>
 </mapper>

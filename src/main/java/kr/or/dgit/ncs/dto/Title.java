@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 @SuppressWarnings("serial")
 public class Title  implements Serializable{
-	private String no; //T001
+	private int no; //T001
 	private String title;
 	
 	
@@ -12,20 +12,20 @@ public class Title  implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Title(String no) {
+	public Title(int no) {
 		this.no = no;
 	}
 
-	public Title(String no, String title) {
+	public Title(int no, String title) {
 		this.no = no;
 		this.title = title;
 	}
 
-	public String getNo() {
+	public int getNo() {
 		return no;
 	}
 
-	public void setNo(String no) {
+	public void setNo(int no) {
 		this.no = no;
 	}
 
@@ -45,11 +45,11 @@ public class Title  implements Serializable{
 	@Override
 	public boolean equals(Object obj) {
 		Title tmp = (Title) obj;
-		return no.equals(tmp.no);
+		return no==tmp.no;
 	}
 	
 	public Object[] toArray(){
-		return new Object[]{no, title};
+		return new Object[]{String.format("T%03d", no), title};
 	}
 	
 }

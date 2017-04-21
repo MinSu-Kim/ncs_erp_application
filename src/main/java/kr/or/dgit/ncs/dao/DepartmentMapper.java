@@ -6,9 +6,9 @@ import java.util.Map;
 import kr.or.dgit.ncs.dto.Department;
 
 public interface DepartmentMapper {
-	public void insertDepartment(Department department);
-	public void updateDepartment(Department department);
-	public void deleteDepartment(Department department);
+	public int insertDepartment(Department department);
+	public int updateDepartment(Department department);
+	public int deleteDepartment(Department department);
 	public List<Department> selectDepartmentByAll();
 	public int getLastDeptCode();
 	public Department selectDepartmentByNo(Map<String, Object> param);

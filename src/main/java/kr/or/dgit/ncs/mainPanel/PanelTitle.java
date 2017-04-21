@@ -31,13 +31,14 @@ public class PanelTitle extends AbstractPanelDto<Title>{
 
 	@Override
 	public void setObject(Title obj) {
-		pNo.setTfValue(obj.getNo()+"");
+		pNo.setTfValue(String.format("T%03d", obj.getNo()));
 		pTitle.setTfValue(obj.getTitle());		
 	}
 
 	@Override
 	public Title getObject() {
-		String no = pNo.getTfValue();
+		String strNo = pNo.getTfValue();
+		int no = Integer.parseInt(strNo.substring(1, strNo.length()));
 		String title = pTitle.getTfValue();
 		return new Title(no, title);
 	}

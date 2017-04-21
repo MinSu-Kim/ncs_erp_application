@@ -20,21 +20,21 @@ public class TitleMapperImpl implements TitleMapper {
 	}
 	
 	@Override
-	public void insertTitle(Title title) {
-		// TODO Auto-generated method stub
-
+	public int insertTitle(Title title) {
+		log.debug("============== insertTitle() ==============");
+		return sqlSession.insert(nameSpace+".insert", title);
 	}
 
 	@Override
-	public void updateTitle(Title title) {
-		// TODO Auto-generated method stub
-
+	public int updateTitle(Title title) {
+		log.debug("============== updateTitle() ==============");
+		return sqlSession.update(nameSpace+".update", title);
 	}
 
 	@Override
-	public void deleteTitle(Title title) {
-		// TODO Auto-generated method stub
-
+	public int deleteTitle(Title title) {
+		log.debug("============== deleteTitle() ==============");
+		return sqlSession.delete(nameSpace+".delete", title);
 	}
 
 	@Override
@@ -44,15 +44,15 @@ public class TitleMapperImpl implements TitleMapper {
 	}
 
 	@Override
-	public String getLastTitleCode() {
-		// TODO Auto-generated method stub
-		return null;
+	public int getLastTitleCode() {
+		log.debug("============== getLastTitleCode() ==============");
+		return sqlSession.selectOne(nameSpace+".lastNum");
 	}
 
 	@Override
 	public Title selectTitleByNo(Map<String, Object> param) {
 		log.debug("============== selectTitleByNo() ==============");
-		return sqlSession.selectOne(".selectOne", param);
+		return sqlSession.selectOne(nameSpace+".selectOne", param);
 	}
 
 }

@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 
 import kr.or.dgit.ncs.view.ViewDepartment;
 import kr.or.dgit.ncs.view.ViewEmployee;
+import kr.or.dgit.ncs.view.ViewTitle;
 
 @SuppressWarnings("serial")
 public class ERP_Application extends JFrame {
@@ -26,6 +27,9 @@ public class ERP_Application extends JFrame {
 					ViewDepartment dframe = new ViewDepartment();
 					dframe.loadData();
 					dframe.setVisible(true);
+					ViewTitle tframe = new ViewTitle();
+					tframe.loadData();
+					tframe.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

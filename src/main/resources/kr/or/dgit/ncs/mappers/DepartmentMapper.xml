@@ -32,6 +32,21 @@
 	</select>
 
 	<select id="lastNum" resultType="int">
-		select max(dcode) from department
+		select max(dcode) from
+		department
 	</select>
+
+	<insert id="insert" parameterType="Department">
+		INSERT INTO department(dcode,
+		dname, floor)VALUES(#{deptNo}, #{dname}, #{floor});
+	</insert>
+	<update id="update" parameterType="Department">
+		UPDATE department
+		SET dname=#{dname}, floor=#{floor}
+		WHERE dcode=#{deptNo}
+	</update>
+	<delete id="delete" parameterType="Department">
+		DELETE FROM employee WHERE
+		dcode=#{deptNo}
+	</delete>
 </mapper>
