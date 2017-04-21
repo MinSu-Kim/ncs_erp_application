@@ -1,7 +1,5 @@
 package kr.or.dgit.ncs.view;
 
-import java.util.Date;
-
 import kr.or.dgit.ncs.dto.Employee;
 import kr.or.dgit.ncs.mainPanel.AbstractPanelDto;
 import kr.or.dgit.ncs.mainPanel.PanelEmployee;
@@ -17,6 +15,8 @@ public class ViewEmployee extends AbstractViewPanel<Employee> {
 	public ViewEmployee() {
 		setTitle("사원 관리");
 		setBounds(100, 100, 586, 524);
+		setTitles();
+		setDepartments();
 	}
 	
 	public void loadData(){
@@ -45,7 +45,7 @@ public class ViewEmployee extends AbstractViewPanel<Employee> {
 
 	@Override
 	protected void initField() {
-		String empNo = String.format("E%ty%03d", new Date(), EmployeeService.getInstance().getLastCode()+1);
+		String empNo = String.format("E%06d", EmployeeService.getInstance().getLastCode()+1);
 		pMain.getNoPanel().setTfValue(empNo);		
 	}
 

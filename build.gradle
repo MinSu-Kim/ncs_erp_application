@@ -1,8 +1,8 @@
-apply plugin: 'java'//src/main과src/test로분할
+apply plugin: 'java'
 apply plugin: 'eclipse'
-apply plugin: 'application'//실행가능한jar파일생성
+apply plugin: 'application'
 
-compileJava.options.encoding= 'UTF-8' //인코딩지정
+compileJava.options.encoding= 'UTF-8'
 
 repositories{
 	jcenter()
@@ -25,6 +25,5 @@ jar {
 	manifest{
 		attributes 'Title': baseName, 'Version': version, 'Main-Class': mainClassName
 	}
-	// archiveName'StudentManagement.jar' //archiveName속성을지정하면baseName속성이나appendix속성은무시된다.
-	dependsOn configurations.runtime// 실행가능한jar 파일설정
+	dependsOn configurations.runtime
 }

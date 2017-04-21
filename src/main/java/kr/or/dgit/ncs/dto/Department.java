@@ -4,29 +4,29 @@ import java.io.Serializable;
 
 @SuppressWarnings("serial")
 public class Department implements Serializable{
-	private String deptNo; //"D+001"
+	private int deptNo; //"D+001"
 	private String deptName;
 	private int floor;
 
 	public Department() {
 	}
 
-	public Department(String deptNo, String deptName, int floor) {
+	public Department(int deptNo, String deptName, int floor) {
 		this.deptNo = deptNo;
 		this.deptName = deptName;
 		this.floor = floor;
 	}
 
 	public Department(Object...obj){
-		this.deptNo = (String) obj[0];
+		this.deptNo = (int) obj[0];
 		this.deptName = (String) obj[1];
 		this.floor = (int) obj[2];
 	}
-	public String getDeptNo() {
+	public int getDeptNo() {
 		return deptNo;
 	}
 
-	public void setDeptNo(String deptNo) {
+	public void setDeptNo(int deptNo) {
 		this.deptNo = deptNo;
 	}
 
@@ -52,13 +52,13 @@ public class Department implements Serializable{
 	}
 
 	public Object[] toArray() {
-		return new Object[] { deptNo, deptName, floor};
+		return new Object[] { String.format("D%03d", deptNo), deptName, floor};
 	}
 
 	@Override
 	public boolean equals(Object obj) {
 		Department tmp = (Department) obj;
-		return deptNo.equals(tmp.deptNo);
+		return deptNo==tmp.deptNo;
 	}
 
 }

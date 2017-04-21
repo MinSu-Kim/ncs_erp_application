@@ -44,15 +44,14 @@ public class EmployeeMapperImpl implements EmployeeMapper {
 	}
 
 	@Override
-	public String getLastEmpCode() {
-		// TODO Auto-generated method stub
-		return null;
+	public int getLastEmpCode() {
+		return sqlSession.selectOne(nameSpace+".lastNum");
 	}
 
 	@Override
 	public Employee selectEmployeeByNo(Map<String, Object> param) {
 		log.debug("============== selectEmployeeByNo() ==============");
-		return sqlSession.selectOne(".selectOne", param);
+		return sqlSession.selectOne(nameSpace+".selectOne", param);
 	}
 
 }

@@ -10,6 +10,6 @@ public interface DepartmentMapper {
 	public void updateDepartment(Department department);
 	public void deleteDepartment(Department department);
 	public List<Department> selectDepartmentByAll();
-	public String getLastDeptCode();
+	public int getLastDeptCode();
 	public Department selectDepartmentByNo(Map<String, Object> param);
 }

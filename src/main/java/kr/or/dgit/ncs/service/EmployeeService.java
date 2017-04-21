@@ -20,8 +20,8 @@ public class EmployeeService {
 		return instance;
 	}
 	
-	public String getLastCode(){
-		String lastCode = null;
+	public int getLastCode(){
+		int lastCode = -1;
 		try (SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSessionFactory().openSession();) {
 			EmployeeMapper empMapper = new EmployeeMapperImpl(sqlSession);
 			lastCode = empMapper.getLastEmpCode();
@@ -74,7 +74,7 @@ public class EmployeeService {
 		return lists;
 	}
 	
-	public Employee selectOne(String empCode) {
+	public Employee selectOne(int empCode) {
 		Employee emp = null;
 		try (SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSessionFactory().openSession();) {
 			EmployeeMapper empMapper = new EmployeeMapperImpl(sqlSession);

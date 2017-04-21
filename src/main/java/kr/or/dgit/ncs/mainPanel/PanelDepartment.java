@@ -39,14 +39,15 @@ public class PanelDepartment extends AbstractPanelDto<Department>{
 
 	@Override
 	public void setObject(Department obj) {
-		pNo.setTfValue(obj.getDeptNo()+"");
+		pNo.setTfValue(String.format("D%03d", obj.getDeptNo()));
 		pName.setTfValue(obj.getDeptName());
 		pFloor.setTfValue(obj.getFloor()+"");		
 	}
 
 	@Override
 	public Department getObject() {
-		String deptNo = pNo.getTfValue();
+		String strDeptNo = pNo.getTfValue();
+		int deptNo = Integer.parseInt(strDeptNo.substring(1, strDeptNo.length()));
 		String deptName = pName.getTfValue();
 		int floor = Integer.parseInt(pFloor.getTfValue());
 		return new Department(deptNo, deptName, floor);

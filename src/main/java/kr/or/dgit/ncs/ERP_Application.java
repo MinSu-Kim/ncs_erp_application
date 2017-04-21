@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import kr.or.dgit.ncs.view.ViewDepartment;
 import kr.or.dgit.ncs.view.ViewEmployee;
 
 @SuppressWarnings("serial")
@@ -19,7 +20,11 @@ public class ERP_Application extends JFrame {
 			public void run() {
 				try {
 //					ERP_Application frame = new ERP_Application();
-					ViewEmployee frame = new ViewEmployee();
+/*					ViewEmployee frame = new ViewEmployee();
+					frame.loadData();
+					frame.setVisible(true);*/
+					ViewDepartment frame = new ViewDepartment();
+					frame.loadData();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -35,8 +40,6 @@ public class ERP_Application extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
-		
-		
 	}
 
 }

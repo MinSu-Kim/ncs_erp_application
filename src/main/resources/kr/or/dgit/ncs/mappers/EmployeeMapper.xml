@@ -5,14 +5,18 @@
 		<id column="eno" property="empNo" />
 		<result column="ename" property="empName"/>
 		<result column="salary" property="salary"/>
-		<result column="dno" property="department.deptNo"/>
+		<result column="dcode" property="department.deptNo"/>
+		<result column="dname" property="department.deptName"/>
+		<result column="floor" property="department.floor"/>
 		<result column="gender" property="gender"/>
 		<result column="joindate" property="joinDate"/>
-		<result column="title" property="title.no"/>
+		<result column="tcode" property="title.no"/>
+		<result column="tname" property="title.title"/>
 	</resultMap>
 	
 	<sql id="selectSql">
-		select eno, ename, salary, dno, gender, date_format(joindate, '%Y-%m-%d') as joindate, title from employee
+		select eno, ename, salary, dcode, dname, floor, gender, date_format(joindate, '%Y-%m-%d') as joindate, tcode, tname 
+		from employee e join title t on e.title=t.tcode join department d on e.dno = d.dcode
 	</sql>
 
 	<sql id="whereSql">
@@ -23,14 +27,17 @@
 		</where>
 	</sql>
 
-
-	<select id="selectOne" parameterType="map" resultType="Employee">
+	<select id="selectOne" parameterType="map" resultMap="EmployeeResult">
 		<include refid="selectSql" />
 		<include refid="whereSql" />
 	</select>
 
 	
-	<select id="select" resultType="Employee">
+	<select id="select" resultMap="EmployeeResult">
 		<include refid="selectSql" />
+	</select>
+	
+	<select id="lastNum" resultType="int">
+		select max(eno) from employee
 	</select>
 </mapper>

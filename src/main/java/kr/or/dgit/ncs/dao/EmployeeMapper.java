@@ -10,6 +10,6 @@ public interface EmployeeMapper {
 	public void updateEmployee(Employee employee);
 	public void deleteEmployee(Employee employee);
 	public List<Employee> selectEmployeeByAll();
-	public String getLastEmpCode();
+	public int getLastEmpCode();
 	public Employee selectEmployeeByNo(Map<String, Object> param);
 }

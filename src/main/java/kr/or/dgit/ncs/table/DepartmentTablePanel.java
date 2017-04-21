@@ -11,6 +11,7 @@ public class DepartmentTablePanel extends AbsTablePanel<Department> {
 
 	@Override
 	public void loadData() {
+		setDataModel(DepartmentService.getInstance().selectList());
 		setModel(new DefaultTableModel(getRowDatas(), getColumnNames()));
 		tableCellAlignment(SwingConstants.CENTER, 0, 1, 2);
 		tableSetWidth(100, 200, 100);		
@@ -18,7 +19,7 @@ public class DepartmentTablePanel extends AbsTablePanel<Department> {
 
 	@Override
 	protected Object[][] getRowDatas() {
-		
+		this.datas = new Object[dataModel.size()][];
 		for(int i=0; i<dataModel.size(); i++){
 			datas[i] = dataModel.get(i).toArray();
 		}
@@ -33,9 +34,9 @@ public class DepartmentTablePanel extends AbsTablePanel<Department> {
 	@Override
 	public Department getSelectedData() {
 		int idx = getSelectedRow();
-		
+		String dno = datas[idx][0].toString();
 		if (idx==-1)return null;
-		return DepartmentService.getInstance().selectOne(datas[idx][0].toString());
+		return DepartmentService.getInstance().selectOne(Integer.parseInt(dno.substring(1)));
 	}
 
 }

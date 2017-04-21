@@ -6,44 +6,40 @@ import java.util.Date;
 
 @SuppressWarnings("serial")
 public class Employee  implements Serializable{
-	private String empNo;	//E07001->E+serialNum(3?��리숫?��);
+	private int empNo;	
 	private String empName;
 	private Title title;
 	private int salary;
 	private boolean gender;
-	private ArrayList<String> hobbys;
 	private Department department;
 	private Date joinDate;
 	
 	public Employee() {}
 	
-	public Employee(String empNo) {
+	public Employee(int empNo) {
 		this.empNo = empNo;
 	}
 	
 	
-	public Employee(String empNo, String empName) {
-		this.empNo = empNo;
+	public Employee(int empNo, String empName) {
+		this(empNo);
 		this.empName = empName;
 	}
 
-	public Employee(String empNo, String empName, Title title, int salary, boolean gender,
-			ArrayList<String> hobbys, Department dept, Date joinDate) {
-		this.empNo = empNo;
-		this.empName = empName;
+	public Employee(int empNo, String empName, Title title, int salary, boolean gender,Department dept, Date joinDate) {
+		this(empNo, empName);
 		this.title = title;
 		this.salary = salary;
 		this.gender = gender;
-		this.hobbys = hobbys;
 		this.department = dept;
 		this.joinDate = joinDate;
 	}
 
-	public String getEmpNo() {
+	public int getEmpNo() {
 		return empNo;
 	}
 
-	public void setEmpNo(String empNo) {
+	public void setEmpNo(int empNo) {
 		this.empNo = empNo;
 	}
 
@@ -88,14 +84,6 @@ public class Employee  implements Serializable{
 		this.gender = gender;
 	}
 
-	public ArrayList<String> getHobbys() {
-		return hobbys;
-	}
-
-	public void setHobbys(ArrayList<String> hobbys) {
-		this.hobbys = hobbys;
-	}
-
 	public Date getJoinDate() {
 		return joinDate;
 	}
@@ -106,16 +94,15 @@ public class Employee  implements Serializable{
 
 	@Override
 	public String toString() {
-		return String.format("%s %s %s", empNo, empName, title);
+		return String.format("%s %s %s", String.format("E%06d", empNo), empName, title);
 	}
-
 	public Object[] toArray(){
-		return new Object[]{empNo, empName, title, String.format("%,d",salary), gender?"남자":"여자", hobbys, department, String.format("%tF", joinDate)};
+		return new Object[]{String.format("E%06d", empNo), empName, title, String.format("%,d",salary), gender?"남자":"여자", department, String.format("%tF", joinDate)};
 	}
 
 	@Override
 	public boolean equals(Object obj) {
 		Employee e = (Employee) obj;
-		return empNo.equals(e.empNo);
+		return empNo==e.empNo;
 	}
 }

@@ -2,6 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.or.dgit.ncs.mappers.DepartmentMapper">
 
+	<resultMap type="Department" id="DepartmentResult">
+		<id column="dcode" property="deptNo" />
+		<result column="dname" property="deptName" />
+		<result column="floor" property="floor" />
+	</resultMap>
+
 	<sql id="selectSql">
 		select dcode, dname, floor from department
 	</sql>
@@ -15,13 +21,17 @@
 	</sql>
 
 
-	<select id="selectOne" parameterType="map" resultType="Department">
+	<select id="selectOne" parameterType="map" resultMap="DepartmentResult">
 		<include refid="selectSql" />
 		<include refid="whereSql" />
 	</select>
 
-	
-	<select id="select" resultType="Department">
+
+	<select id="select" resultMap="DepartmentResult">
 		<include refid="selectSql" />
+	</select>
+
+	<select id="lastNum" resultType="int">
+		select max(dcode) from department
 	</select>
 </mapper>

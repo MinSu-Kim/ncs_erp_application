@@ -44,15 +44,15 @@ public class DepartmentMapperImpl implements DepartmentMapper {
 	}
 
 	@Override
-	public String getLastDeptCode() {
-		// TODO Auto-generated method stub
-		return null;
+	public int getLastDeptCode() {
+		log.debug("============== getLastDeptCode() ==============");
+		return sqlSession.selectOne(nameSpace+".lastNum");
 	}
 
 	@Override
 	public Department selectDepartmentByNo(Map<String, Object> param) {
 		log.debug("============== selectDepartmentByNo() ==============");
-		return sqlSession.selectOne(".selectOne", param);
+		return sqlSession.selectOne(nameSpace+".selectOne", param);
 	}
 
 }

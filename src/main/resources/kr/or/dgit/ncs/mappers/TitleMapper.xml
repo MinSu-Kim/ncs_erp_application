@@ -2,6 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.or.dgit.ncs.mappers.TitleMapper">
 
+	<resultMap type="Title" id="TitleResult">
+		<id column="tcode" property="no" />
+		<result column="tname" property="title"/>
+	</resultMap>
+	
 	<sql id="selectSql">
 		select tcode, tname from title
 	</sql>
@@ -15,13 +20,13 @@
 	</sql>
 
 
-	<select id="selectOne" parameterType="map" resultType="Title">
+	<select id="selectOne" parameterType="map" resultMap="TitleResult">
 		<include refid="selectSql" />
 		<include refid="whereSql" />
 	</select>
 
 	
-	<select id="select" resultType="Title">
+	<select id="select" resultMap="TitleResult">
 		<include refid="selectSql" />
 	</select>
 </mapper>

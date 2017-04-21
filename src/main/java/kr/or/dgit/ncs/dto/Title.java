@@ -7,6 +7,11 @@ public class Title  implements Serializable{
 	private String no; //T001
 	private String title;
 	
+	
+	public Title() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public Title(String no) {
 		this.no = no;
 	}

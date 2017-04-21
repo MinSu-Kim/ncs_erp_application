@@ -20,8 +20,8 @@ public class DepartmentService {
 		return instance;
 	}
 	
-	public String getLastCode(){
-		String lastCode = null;
+	public int getLastCode(){
+		int lastCode = -1;
 		try (SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSessionFactory().openSession();) {
 			DepartmentMapper deptMapper = new DepartmentMapperImpl(sqlSession);
 			lastCode = deptMapper.getLastDeptCode();
@@ -74,13 +74,13 @@ public class DepartmentService {
 		return lists;
 	}
 	
-	public Department selectOne(String empCode) {
+	public Department selectOne(int dCode) {
 		Department dept = null;
 		try (SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSessionFactory().openSession();) {
 			DepartmentMapper deptMapper = new DepartmentMapperImpl(sqlSession);
 			
 			Map<String, Object> parameters = new HashMap<>();
-			parameters.put("eno", empCode);
+			parameters.put("dcode", dCode);
 			dept =  deptMapper.selectDepartmentByNo(parameters);
 		}catch(Exception e){
 			e.printStackTrace();

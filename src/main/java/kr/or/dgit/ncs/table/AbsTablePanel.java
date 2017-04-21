@@ -13,7 +13,6 @@ public abstract class AbsTablePanel<T> extends JTable {
 	
 	public void setDataModel(List<T> dataModel) {
 		this.dataModel = dataModel;
-		this.datas = new Object[dataModel.size()][];
 	}
 	
 	public List<T> getDataModel() {
