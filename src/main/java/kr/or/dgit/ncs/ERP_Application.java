@@ -20,12 +20,12 @@ public class ERP_Application extends JFrame {
 			public void run() {
 				try {
 //					ERP_Application frame = new ERP_Application();
-/*					ViewEmployee frame = new ViewEmployee();
-					frame.loadData();
-					frame.setVisible(true);*/
-					ViewDepartment frame = new ViewDepartment();
+					ViewEmployee frame = new ViewEmployee();
 					frame.loadData();
 					frame.setVisible(true);
+					ViewDepartment dframe = new ViewDepartment();
+					dframe.loadData();
+					dframe.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

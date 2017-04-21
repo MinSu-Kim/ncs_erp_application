@@ -20,21 +20,23 @@ public class EmployeeMapperImpl implements EmployeeMapper {
 	}
 	
 	@Override
-	public void insertEmployee(Employee employee) {
-		// TODO Auto-generated method stub
+	public int insertEmployee(Employee employee) {
+		log.debug("============== insertEmployee() ==============");
+		return sqlSession.insert(nameSpace+".insert", employee);
 
 	}
 
 	@Override
-	public void updateEmployee(Employee employee) {
-		// TODO Auto-generated method stub
+	public int updateEmployee(Employee employee) {
+		log.debug("============== updateEmployee() ==============");
+		return sqlSession.update(nameSpace+".update", employee);
 
 	}
 
 	@Override
-	public void deleteEmployee(Employee employee) {
-		// TODO Auto-generated method stub
-
+	public int deleteEmployee(Employee employee) {
+		log.debug("============== deleteEmployee() ==============");
+		return sqlSession.delete(nameSpace+".delete", employee);
 	}
 
 	@Override

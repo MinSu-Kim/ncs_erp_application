@@ -89,6 +89,7 @@ public abstract class AbstractViewPanel<T> extends JFrame {
 					return;
 				}
 				pMain.setObject(selectItem);
+				btnAdd.setText("수정");
 			}
 			if (e.getActionCommand().equals("삭제")){
 				selectItem  = tablePanel.getSelectedData();
