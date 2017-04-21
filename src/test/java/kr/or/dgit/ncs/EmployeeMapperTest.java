@@ -73,4 +73,10 @@ public class EmployeeMapperTest {
 		Assert.assertNotNull(list);
 	}
 
+	@Test
+	public void testESelectOne(){
+		int empCode = EmployeeService.getInstance().getLastCode();
+		Employee targetEmp = EmployeeService.getInstance().selectOne(empCode);
+		Assert.assertNotNull(targetEmp);
+	}
 }
