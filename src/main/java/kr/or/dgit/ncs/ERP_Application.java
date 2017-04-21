@@ -1,8 +1,11 @@
 package kr.or.dgit.ncs;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -10,10 +13,6 @@ import javax.swing.border.EmptyBorder;
 import kr.or.dgit.ncs.view.ViewDepartment;
 import kr.or.dgit.ncs.view.ViewEmployee;
 import kr.or.dgit.ncs.view.ViewTitle;
-import javax.swing.JButton;
-import java.awt.GridLayout;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
 public class ERP_Application extends JFrame implements ActionListener {
@@ -27,16 +26,8 @@ public class ERP_Application extends JFrame implements ActionListener {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-//					ERP_Application frame = new ERP_Application();
-					ViewEmployee frame = new ViewEmployee();
-					frame.loadData();
+					ERP_Application frame = new ERP_Application();
 					frame.setVisible(true);
-					ViewDepartment dframe = new ViewDepartment();
-					dframe.loadData();
-					dframe.setVisible(true);
-					ViewTitle tframe = new ViewTitle();
-					tframe.loadData();
-					tframe.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -78,9 +69,18 @@ public class ERP_Application extends JFrame implements ActionListener {
 		}
 	}
 	protected void actionPerformedBtnEmp(ActionEvent e) {
+		ViewEmployee frame = new ViewEmployee();
+		frame.loadData();
+		frame.setVisible(true);
 	}
 	protected void actionPerformedBtnDept(ActionEvent e) {
+		ViewDepartment dframe = new ViewDepartment();
+		dframe.loadData();
+		dframe.setVisible(true);
 	}
 	protected void actionPerformedBtnTitle(ActionEvent e) {
+		ViewTitle tframe = new ViewTitle();
+		tframe.loadData();
+		tframe.setVisible(true);
 	}
 }

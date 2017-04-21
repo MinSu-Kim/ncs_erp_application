@@ -4,7 +4,6 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
 import kr.or.dgit.ncs.dto.Title;
-import kr.or.dgit.ncs.service.DepartmentService;
 import kr.or.dgit.ncs.service.TitleService;
 
 @SuppressWarnings("serial")

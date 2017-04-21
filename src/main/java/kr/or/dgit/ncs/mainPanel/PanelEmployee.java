@@ -3,11 +3,9 @@ package kr.or.dgit.ncs.mainPanel;
 import java.awt.GridLayout;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import kr.or.dgit.ncs.common.CheckBoxPanel;
 import kr.or.dgit.ncs.common.ComboBoxPanel;
 import kr.or.dgit.ncs.common.RadioBtnPanel;
 import kr.or.dgit.ncs.common.SpinnderPanel;
