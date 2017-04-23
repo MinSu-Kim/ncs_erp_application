@@ -48,6 +48,7 @@ public class PanelEmployee extends AbstractPanelDto<Employee> {
 
 		pGender = new RadioBtnPanel("남", "여");
 		pGender.setTitle("성별");
+		pGender.setSelectedItem("남");
 		add(pGender);
 
 		pDepartment = new ComboBoxPanel<>();
